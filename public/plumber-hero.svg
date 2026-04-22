@@ -1,0 +1,18 @@
+<svg width="1200" height="900" viewBox="0 0 1200 900" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Plumber with tools illustration</title>
+  <desc id="desc">A plumber icon with wrench and water drops.</desc>
+  <rect width="1200" height="900" rx="32" fill="#F8FAFC"/>
+  <circle cx="280" cy="190" r="110" fill="#E2E8F0"/>
+  <path d="M240 330C240 275 285 230 340 230H860C915 230 960 275 960 330V640C960 695 915 740 860 740H340C285 740 240 695 240 640V330Z" fill="#0F172A"/>
+  <rect x="320" y="300" width="560" height="360" rx="24" fill="#1E293B"/>
+  <path d="M505 440C505 386 549 342 603 342C657 342 701 386 701 440V480H505V440Z" fill="#22C55E"/>
+  <rect x="470" y="480" width="265" height="130" rx="18" fill="#22C55E"/>
+  <rect x="448" y="500" width="40" height="150" rx="20" fill="#22C55E"/>
+  <rect x="718" y="500" width="40" height="150" rx="20" fill="#22C55E"/>
+  <circle cx="603" cy="215" r="65" fill="#CBD5E1"/>
+  <rect x="960" y="440" width="120" height="28" rx="14" fill="#22C55E"/>
+  <rect x="1040" y="400" width="28" height="120" rx="14" fill="#22C55E"/>
+  <circle cx="860" cy="170" r="24" fill="#38BDF8"/>
+  <circle cx="920" cy="120" r="16" fill="#38BDF8"/>
+  <circle cx="980" cy="180" r="20" fill="#38BDF8"/>
+</svg>
