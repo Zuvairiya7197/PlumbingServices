@@ -19,40 +19,50 @@ const navItems = [
   { label: "Contact", href: "#contact" },
 ];
 
-const utilityItems = ["24/7 Emergency Service", "Locally Trusted Team", "Licensed & Insured"];
+const utilityItems = [
+  { label: "24/7 Emergency Service", icon: "☎" },
+  { label: "Locally Trusted Team", icon: "★" },
+  { label: "Licensed & Insured", icon: "🛡" },
+];
 
 const services = [
   {
+    icon: "💧",
     title: "Leak Repair",
     description: "Stop hidden or visible leaks before they become bigger problems.",
   },
   {
+    icon: "🌀",
     title: "Drain Cleaning",
     description: "Clear slow or blocked drains quickly with professional tools.",
   },
   {
+    icon: "♨",
     title: "Water Heater Repair",
     description: "Restore hot water fast for gas and electric systems.",
   },
   {
+    icon: "🚨",
     title: "Emergency Plumbing",
     description: "Immediate help for urgent plumbing issues day or night.",
   },
   {
+    icon: "🔧",
     title: "Pipe Installation",
     description: "Durable pipe installs and replacements done the right way.",
   },
   {
+    icon: "✅",
     title: "Preventive Inspections",
     description: "Find risks early and reduce emergency plumbing surprises.",
   },
 ];
 
 const trustStats = [
-  { value: "4.8+", label: "Google Rating" },
-  { value: "10+", label: "Years Experience" },
-  { value: "24/7", label: "Emergency Availability" },
-  { value: "100%", label: "Satisfaction Focus" },
+  { icon: "★", value: "4.8+", label: "Google Rating" },
+  { icon: "🏅", value: "10+", label: "Years Experience" },
+  { icon: "🕒", value: "24/7", label: "Emergency Availability" },
+  { icon: "🛡", value: "100%", label: "Satisfaction Focus" },
 ];
 
 const reasons = [
@@ -99,9 +109,10 @@ function PrimaryCall({ className = "", label = "Call Now" }: { className?: strin
     <a
       href={business.phoneHref}
       aria-label={`Call ${business.name} at ${business.phoneDisplay}`}
-      className={`inline-flex items-center justify-center rounded-xl bg-red-600 px-6 py-4 text-base font-bold uppercase tracking-[0.04em] text-white transition hover:bg-red-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-200 ${className}`}
+      className={`inline-flex items-center justify-center gap-2 rounded-xl bg-red-600 px-6 py-4 text-base font-bold uppercase tracking-[0.04em] text-white transition hover:bg-red-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-200 ${className}`}
     >
-      {label}
+      <span aria-hidden>☎</span>
+      <span>{label}</span>
     </a>
   );
 }
@@ -117,7 +128,7 @@ function SectionHeading({ eyebrow, title }: { eyebrow: string; title: string }) 
 
 export default function Page() {
   return (
-    <main id="home" className="bg-white text-[#0c2344]">
+    <main id="home" className="bg-white pb-20 text-[#0c2344] md:pb-0">
       <a
         href="#main-content"
         className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-white focus:px-4 focus:py-2"
@@ -128,18 +139,26 @@ export default function Page() {
       <div className="bg-[#031b3d] text-white">
         <div className="mx-auto grid max-w-[1280px] gap-2 px-4 py-2 text-center text-xs font-semibold uppercase tracking-[0.08em] sm:grid-cols-3 sm:text-sm">
           {utilityItems.map((item) => (
-            <p key={item}>{item}</p>
+            <p key={item.label} className="inline-flex items-center justify-center gap-2">
+              <span
+                aria-hidden
+                className="inline-flex h-5 w-5 items-center justify-center rounded-full border border-white/40 text-[11px]"
+              >
+                {item.icon}
+              </span>
+              <span>{item.label}</span>
+            </p>
           ))}
         </div>
       </div>
 
       <header className="border-b border-slate-200 bg-white">
-        <div className="mx-auto flex max-w-[1280px] flex-wrap items-center justify-between gap-4 px-4 py-4">
+        <div className="mx-auto flex max-w-[1280px] flex-wrap items-center justify-between gap-3 px-4 py-4 sm:gap-4">
           <a href="#home" className="inline-flex items-center gap-3" aria-label="DRS Plumbing Service home">
-            <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#062451] text-xl font-bold text-white">DR</div>
+            <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#062451] text-xl font-bold text-white">💧</div>
             <div>
-              <p className="text-3xl font-extrabold uppercase leading-none text-[#062451]">DRS</p>
-              <p className="text-sm font-semibold uppercase tracking-[0.08em] text-slate-600">Plumbing Service</p>
+              <p className="text-2xl font-extrabold uppercase leading-none text-[#062451] sm:text-3xl">DRS</p>
+              <p className="text-xs font-semibold uppercase tracking-[0.08em] text-slate-600 sm:text-sm">Plumbing Service</p>
             </div>
           </a>
 
@@ -155,51 +174,70 @@ export default function Page() {
             ))}
           </nav>
 
-          <a
-            href={business.phoneHref}
-            className="rounded-xl border border-slate-300 bg-slate-50 px-4 py-3 text-right shadow-sm"
-          >
-            <p className="text-3xl font-extrabold leading-none text-[#062451]">{business.phoneDisplay}</p>
-            <p className="mt-1 text-sm font-semibold uppercase tracking-[0.08em] text-red-600">24/7 Emergency Service</p>
+          <a href={business.phoneHref} className="rounded-xl border border-slate-300 bg-slate-50 px-3 py-2 shadow-sm sm:px-4 sm:py-3">
+            <div className="flex items-center gap-3">
+              <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-[#062451] text-lg text-white" aria-hidden>
+                ☎
+              </span>
+              <div className="text-right">
+                <p className="text-2xl font-extrabold leading-none text-[#062451] sm:text-3xl">{business.phoneDisplay}</p>
+                <p className="mt-1 text-xs font-semibold uppercase tracking-[0.08em] text-red-600 sm:text-sm">24/7 Emergency Service</p>
+              </div>
+            </div>
           </a>
         </div>
+
+        <nav className="border-t border-slate-200 xl:hidden" aria-label="Primary mobile">
+          <div className="mx-auto flex max-w-[1280px] items-center gap-5 overflow-x-auto px-4 py-3">
+            {navItems.map((item) => (
+              <a
+                key={item.label}
+                href={item.href}
+                className="whitespace-nowrap text-xs font-semibold uppercase tracking-[0.08em] text-[#0b2b58] transition hover:text-sky-600 sm:text-sm"
+              >
+                {item.label}
+              </a>
+            ))}
+          </div>
+        </nav>
       </header>
 
       <section id="main-content" className="relative overflow-hidden bg-slate-100">
         <div className="mx-auto grid max-w-[1280px] items-stretch lg:grid-cols-2">
           <div className="px-4 pb-8 pt-10 sm:px-8 lg:py-14">
-            <p className="text-4xl font-extrabold uppercase leading-none text-red-600 sm:text-5xl">Need Plumbing Help?</p>
-            <h1 className="mt-3 text-6xl font-extrabold uppercase leading-[0.9] text-[#062451] sm:text-7xl">
+            <p className="text-3xl font-extrabold uppercase leading-none text-red-600 sm:text-4xl lg:text-5xl">Need Plumbing Help?</p>
+            <h1 className="mt-3 text-5xl font-extrabold uppercase leading-[0.9] text-[#062451] sm:text-6xl lg:text-7xl">
               We Fix It
               <br />
               Fast.
             </h1>
 
-            <p className="mt-6 max-w-xl text-2xl text-[#1c355f]">
+            <p className="mt-6 max-w-xl text-xl text-[#1c355f] sm:text-2xl">
               24/7 emergency plumbing in Winder, GA with fast response and reliable service.
             </p>
 
-            <ul className="mt-6 space-y-2 text-xl text-[#0d2850]">
-              <li className="flex items-start gap-3"><span className="font-bold text-sky-600">●</span> Available 24/7 for urgent issues</li>
-              <li className="flex items-start gap-3"><span className="font-bold text-sky-600">●</span> Quick local response times</li>
-              <li className="flex items-start gap-3"><span className="font-bold text-sky-600">●</span> Upfront pricing and clear communication</li>
-              <li className="flex items-start gap-3"><span className="font-bold text-sky-600">●</span> Licensed, insured, and experienced team</li>
+            <ul className="mt-6 space-y-2 text-lg text-[#0d2850] sm:text-xl">
+              <li className="flex items-start gap-3"><span className="text-sky-600">✔</span> Available 24/7 for urgent issues</li>
+              <li className="flex items-start gap-3"><span className="text-sky-600">✔</span> Quick local response times</li>
+              <li className="flex items-start gap-3"><span className="text-sky-600">✔</span> Upfront pricing and clear communication</li>
+              <li className="flex items-start gap-3"><span className="text-sky-600">✔</span> Licensed, insured, and experienced team</li>
             </ul>
 
-            <div className="mt-7 flex flex-wrap gap-3">
-              <PrimaryCall label={`Call ${business.phoneDisplay}`} className="min-w-[230px]" />
+            <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+              <PrimaryCall label={`Call ${business.phoneDisplay}`} className="w-full sm:w-auto" />
               <a
                 href="#contact"
-                className="inline-flex min-w-[230px] items-center justify-center rounded-xl border border-[#1d4b85] bg-white px-6 py-4 text-base font-semibold uppercase tracking-[0.05em] text-[#0f3d78] transition hover:bg-slate-50"
+                className="inline-flex w-full items-center justify-center rounded-xl border border-[#1d4b85] bg-white px-6 py-4 text-base font-semibold uppercase tracking-[0.05em] text-[#0f3d78] transition hover:bg-slate-50 sm:w-auto"
               >
+                <span aria-hidden>📅</span>
                 Get Free Estimate
               </a>
             </div>
           </div>
 
-          <div className="relative min-h-[420px] lg:min-h-[640px]">
+          <div className="relative min-h-[320px] sm:min-h-[420px] lg:min-h-[640px]">
             <Image
-              src="/plumber-hero.svg"
+              src="/Heroimage.png"
               alt="Professional plumber repairing kitchen drain line"
               fill
               priority
@@ -207,9 +245,12 @@ export default function Page() {
               className="object-cover"
             />
             <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-slate-100 to-transparent" aria-hidden />
-            <div className="absolute bottom-5 right-5 rounded-2xl border border-sky-400/70 bg-[#072a57] p-4 text-white shadow-lg">
+            <div className="absolute bottom-4 right-4 rounded-2xl border border-sky-400/70 bg-[#072a57] p-3 text-white shadow-lg sm:bottom-5 sm:right-5 sm:p-4">
               <p className="text-xs font-semibold uppercase tracking-[0.1em] text-sky-300">Rapid Response</p>
-              <p className="mt-1 text-2xl font-extrabold uppercase leading-tight">We Arrive Fast</p>
+              <p className="mt-1 inline-flex items-center gap-2 text-lg font-extrabold uppercase leading-tight sm:text-2xl">
+                <span aria-hidden>🕒</span>
+                We Arrive Fast
+              </p>
             </div>
           </div>
         </div>
@@ -219,6 +260,7 @@ export default function Page() {
         <div className="mx-auto grid max-w-[1280px] gap-3 px-4 sm:grid-cols-2 lg:grid-cols-4">
           {trustStats.map((item) => (
             <div key={item.label} className="rounded-xl border border-slate-200 bg-slate-50 p-4 text-center">
+              <p className="text-2xl" aria-hidden>{item.icon}</p>
               <p className="text-4xl font-extrabold leading-none text-[#0f4ea1]">{item.value}</p>
               <p className="mt-1 text-lg font-semibold uppercase tracking-[0.04em] text-[#0c2d5d]">{item.label}</p>
             </div>
@@ -232,12 +274,14 @@ export default function Page() {
           <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
             {services.map((service) => (
               <article key={service.title} className="rounded-xl border border-slate-200 bg-white p-5 text-center shadow-sm">
+                <p className="text-3xl" aria-hidden>{service.icon}</p>
                 <h3 className="text-xl font-extrabold uppercase leading-tight text-[#0f2f5f]">{service.title}</h3>
                 <p className="mt-3 text-base text-slate-600">{service.description}</p>
                 <a
                   href={business.phoneHref}
                   className="mt-4 inline-flex items-center justify-center text-sm font-semibold uppercase tracking-[0.08em] text-sky-700 hover:text-sky-800"
                 >
+                  <span aria-hidden className="mr-1">☎</span>
                   Call Now
                 </a>
               </article>
@@ -246,11 +290,11 @@ export default function Page() {
         </div>
       </section>
 
-      <section id="about" className="bg-[#031b3d] py-14 text-white">
+      <section id="about" className="bg-[#031b3d] py-12 text-white sm:py-14">
         <div className="mx-auto grid max-w-[1280px] gap-8 px-4 lg:grid-cols-2">
           <div className="relative min-h-[380px] overflow-hidden rounded-2xl border border-white/20">
             <Image
-              src="/plumber-hero.svg"
+              src="/whychooseus.png"
               alt="Plumber working on residential water heater connection"
               fill
               sizes="(max-width: 1024px) 100vw, 50vw"
@@ -263,19 +307,19 @@ export default function Page() {
 
           <div>
             <p className="text-sm font-semibold uppercase tracking-[0.16em] text-sky-300">Why Choose Us</p>
-            <h2 className="mt-2 text-5xl font-extrabold uppercase leading-[0.9]">
+            <h2 className="mt-2 text-4xl font-extrabold uppercase leading-[0.95] sm:text-5xl">
               Your Plumbing.
               <br />
               <span className="text-sky-400">Our Promise.</span>
             </h2>
-            <p className="mt-4 text-xl text-slate-200">
+            <p className="mt-4 text-lg text-slate-200 sm:text-xl">
               We are your local team focused on fast service, quality repairs, and long-term solutions.
             </p>
 
-            <ul className="mt-6 space-y-2 text-lg">
+            <ul className="mt-6 space-y-2 text-base sm:text-lg">
               {reasons.map((reason) => (
                 <li key={reason} className="flex gap-3">
-                  <span className="text-sky-300">●</span>
+                  <span className="text-sky-300">✔</span>
                   <span>{reason}</span>
                 </li>
               ))}
@@ -311,23 +355,28 @@ export default function Page() {
         <div className="mx-auto flex max-w-[1280px] flex-wrap items-center justify-between gap-5 px-4">
           <div>
             <p className="text-sm font-semibold uppercase tracking-[0.1em] text-sky-100">Need a Plumber Now?</p>
-            <p className="mt-1 text-4xl font-extrabold uppercase leading-none">We&apos;re Ready to Help</p>
-            <p className="mt-2 text-xl text-sky-100">Call now for immediate assistance.</p>
+            <p className="mt-1 inline-flex items-center gap-2 text-3xl font-extrabold uppercase leading-none sm:text-4xl">
+              <span aria-hidden>📞</span>
+              We&apos;re Ready to Help
+            </p>
+            <p className="mt-2 text-lg text-sky-100 sm:text-xl">Call now for immediate assistance.</p>
           </div>
-          <PrimaryCall className="min-w-[280px] bg-red-600" label={`Call ${business.phoneDisplay}`} />
+          <PrimaryCall className="w-full bg-red-600 sm:w-auto" label={`Call ${business.phoneDisplay}`} />
         </div>
       </section>
 
       <section id="service-area" className="bg-[#031b3d] py-12 text-white">
-        <div className="mx-auto grid max-w-[1280px] gap-8 px-4 md:grid-cols-4">
+        <div className="mx-auto grid max-w-[1280px] gap-8 px-4 sm:grid-cols-2 lg:grid-cols-4">
           <div>
             <h3 className="text-3xl font-extrabold uppercase">DRS Plumbing Service</h3>
             <p className="mt-3 text-slate-300">
               Providing reliable plumbing services in Winder, GA and nearby communities.
             </p>
-            <a href={business.facebook} target="_blank" rel="noopener noreferrer" className="mt-4 inline-block text-sky-300">
-              Facebook
-            </a>
+            <div className="mt-4 flex items-center gap-2 text-sky-300">
+              <a href={business.facebook} target="_blank" rel="noopener noreferrer" className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-sky-300/70">f</a>
+              <a href={business.facebook} target="_blank" rel="noopener noreferrer" className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-sky-300/70">g</a>
+              <a href={business.facebook} target="_blank" rel="noopener noreferrer" className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-sky-300/70">ig</a>
+            </div>
           </div>
 
           <div>
@@ -356,17 +405,25 @@ export default function Page() {
             <h3 className="text-xl font-bold uppercase text-sky-300">Contact</h3>
             <ul className="mt-3 space-y-2 text-slate-200">
               <li>
-                <a href={business.phoneHref} className="hover:text-white">
+                <a href={business.phoneHref} className="inline-flex items-center gap-2 hover:text-white">
+                  <span aria-hidden>☎</span>
                   {business.phoneDisplay}
                 </a>
               </li>
               <li>
-                <a href={`mailto:${business.email}`} className="hover:text-white">
+                <a href={`mailto:${business.email}`} className="inline-flex items-center gap-2 hover:text-white">
+                  <span aria-hidden>✉</span>
                   {business.email}
                 </a>
               </li>
-              <li>{business.location}</li>
-              <li>Serving Winder, GA &amp; nearby areas</li>
+              <li className="inline-flex items-center gap-2">
+                <span aria-hidden>📍</span>
+                {business.location}
+              </li>
+              <li className="inline-flex items-center gap-2">
+                <span aria-hidden>🕒</span>
+                Serving Winder, GA &amp; nearby areas
+              </li>
             </ul>
           </div>
         </div>
@@ -379,7 +436,7 @@ export default function Page() {
       <a
         href={business.phoneHref}
         aria-label={`Call now at ${business.phoneDisplay}`}
-        className="fixed bottom-6 right-6 z-50 hidden items-center gap-2 rounded-full bg-red-600 px-5 py-3 text-sm font-bold uppercase tracking-[0.06em] text-white shadow-[0_12px_24px_rgba(220,38,38,0.4)] transition hover:bg-red-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-300 md:inline-flex"
+        className="fixed bottom-6 right-6 z-50 hidden items-center gap-2 rounded-full bg-red-600 px-5 py-3 text-sm font-bold uppercase tracking-[0.06em] text-white shadow-[0_12px_24px_rgba(220,38,38,0.4)] transition hover:bg-red-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-300 lg:inline-flex"
       >
         <span aria-hidden>☎</span>
         Call Now
