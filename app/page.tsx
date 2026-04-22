@@ -59,10 +59,10 @@ const services = [
 ];
 
 const trustStats = [
-  { icon: "★", value: "4.8+", label: "Google Rating" },
-  { icon: "🏅", value: "10+", label: "Years Experience" },
-  { icon: "🕒", value: "24/7", label: "Emergency Availability" },
-  { icon: "🛡", value: "100%", label: "Satisfaction Focus" },
+  { value: "4.8+", label: "Google Rating" },
+  { value: "10+", label: "Years Experience" },
+  { value: "24/7", label: "Emergency Availability" },
+  { value: "100%", label: "Satisfaction Focus" },
 ];
 
 const reasons = [
@@ -74,16 +74,28 @@ const reasons = [
 
 const reviews = [
   {
-    name: "Jessica M.",
-    text: "Our leak was fixed the same day. Easy process, fair pricing, and very professional.",
+    name: "just me",
+    text: "DRS changed three leaky bathroom faucets for me. Very dependable, on time, professional, polite, and no mess left behind.",
   },
   {
-    name: "Mike R.",
-    text: "Quick response and clear communication. The technician explained everything clearly.",
+    name: "Larry Meloro",
+    text: "Danny got the exact 80-gallon water heater I wanted at a better price than other quotes. His team was on time and did a great job.",
   },
   {
-    name: "Sarah T.",
-    text: "Excellent emergency help late at night. Clean work and great follow-up.",
+    name: "Lilian Cruz",
+    text: "Excellent service. The plumber was prompt, professional, and fixed a leak and stubborn clog efficiently with fair pricing.",
+  },
+  {
+    name: "Garrett Tomlinson",
+    text: "I rarely leave reviews, but this company is wonderful. Prompt turnaround, consistent quality, and very reliable service.",
+  },
+  {
+    name: "Brandi",
+    text: "Called at 8 with a water heater leak, and by 10:30 a new one was installed. Upfront pricing and very reasonable.",
+  },
+  {
+    name: "John Brouwer",
+    text: "Quality, service, and integrity. They stand behind their work, which is hard to find these days.",
   },
 ];
 
@@ -237,7 +249,7 @@ export default function Page() {
 
           <div className="relative min-h-[320px] sm:min-h-[420px] lg:min-h-[640px]">
             <Image
-              src="/Heroimage.png"
+              src="/Heroimage.webp"
               alt="Professional plumber repairing kitchen drain line"
               fill
               priority
@@ -260,7 +272,6 @@ export default function Page() {
         <div className="mx-auto grid max-w-[1280px] gap-3 px-4 sm:grid-cols-2 lg:grid-cols-4">
           {trustStats.map((item) => (
             <div key={item.label} className="rounded-xl border border-slate-200 bg-slate-50 p-4 text-center">
-              <p className="text-2xl" aria-hidden>{item.icon}</p>
               <p className="text-4xl font-extrabold leading-none text-[#0f4ea1]">{item.value}</p>
               <p className="mt-1 text-lg font-semibold uppercase tracking-[0.04em] text-[#0c2d5d]">{item.label}</p>
             </div>
@@ -294,7 +305,7 @@ export default function Page() {
         <div className="mx-auto grid max-w-[1280px] gap-8 px-4 lg:grid-cols-2">
           <div className="relative min-h-[380px] overflow-hidden rounded-2xl border border-white/20">
             <Image
-              src="/whychooseus.png"
+              src="/whychooseus.webp"
               alt="Plumber working on residential water heater connection"
               fill
               sizes="(max-width: 1024px) 100vw, 50vw"
@@ -355,10 +366,7 @@ export default function Page() {
         <div className="mx-auto flex max-w-[1280px] flex-wrap items-center justify-between gap-5 px-4">
           <div>
             <p className="text-sm font-semibold uppercase tracking-[0.1em] text-sky-100">Need a Plumber Now?</p>
-            <p className="mt-1 inline-flex items-center gap-2 text-3xl font-extrabold uppercase leading-none sm:text-4xl">
-              <span aria-hidden>📞</span>
-              We&apos;re Ready to Help
-            </p>
+            <p className="mt-1 text-3xl font-extrabold uppercase leading-none sm:text-4xl">We&apos;re Ready to Help</p>
             <p className="mt-2 text-lg text-sky-100 sm:text-xl">Call now for immediate assistance.</p>
           </div>
           <PrimaryCall className="w-full bg-red-600 sm:w-auto" label={`Call ${business.phoneDisplay}`} />
@@ -366,71 +374,89 @@ export default function Page() {
       </section>
 
       <section id="service-area" className="bg-[#031b3d] py-12 text-white">
-        <div className="mx-auto grid max-w-[1280px] gap-8 px-4 sm:grid-cols-2 lg:grid-cols-4">
-          <div>
-            <h3 className="text-3xl font-extrabold uppercase">DRS Plumbing Service</h3>
-            <p className="mt-3 text-slate-300">
-              Providing reliable plumbing services in Winder, GA and nearby communities.
-            </p>
-            <div className="mt-4 flex items-center gap-2 text-sky-300">
-              <a href={business.facebook} target="_blank" rel="noopener noreferrer" className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-sky-300/70">f</a>
-              <a href={business.facebook} target="_blank" rel="noopener noreferrer" className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-sky-300/70">g</a>
-              <a href={business.facebook} target="_blank" rel="noopener noreferrer" className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-sky-300/70">ig</a>
+        <div className="mx-auto max-w-[1280px] px-4">
+          <div className="grid gap-8 border-b border-white/15 pb-10 md:grid-cols-2 lg:grid-cols-12">
+            <div className="lg:col-span-5">
+              <h3 className="text-3xl font-extrabold uppercase">DRS Plumbing Service</h3>
+              <p className="mt-3 max-w-md text-slate-300">
+                Providing reliable plumbing services in Winder, GA and nearby communities.
+              </p>
+              <div className="mt-4 overflow-hidden rounded-lg border border-white/20">
+                <iframe
+                  title="DRS Plumbing Service area map"
+                  src="https://www.google.com/maps?q=Winder,GA&output=embed"
+                  className="h-44 w-full"
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                />
+              </div>
+              <div className="mt-4 flex items-center gap-3 text-sky-300">
+                <a
+                  href={business.facebook}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-sky-300/70 font-bold"
+                  aria-label="Visit our Facebook page"
+                >
+                  f
+                </a>
+              </div>
             </div>
-          </div>
 
-          <div>
-            <h3 className="text-xl font-bold uppercase text-sky-300">Quick Links</h3>
-            <ul className="mt-3 space-y-2 text-slate-200">
-              {navItems.map((item) => (
-                <li key={item.label}>
-                  <a href={item.href} className="hover:text-white">
-                    {item.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
+            <div className="lg:col-span-2">
+              <h3 className="text-xl font-bold uppercase text-sky-300">Quick Links</h3>
+              <ul className="mt-4 space-y-2 text-slate-200">
+                {navItems.map((item) => (
+                  <li key={item.label}>
+                    <a href={item.href} className="hover:text-white">
+                      {item.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
 
-          <div>
-            <h3 className="text-xl font-bold uppercase text-sky-300">Services</h3>
-            <ul className="mt-3 space-y-2 text-slate-200">
-              {services.slice(0, 5).map((service) => (
-                <li key={service.title}>{service.title}</li>
-              ))}
-            </ul>
-          </div>
+            <div className="lg:col-span-2">
+              <h3 className="text-xl font-bold uppercase text-sky-300">Services</h3>
+              <ul className="mt-4 space-y-2 text-slate-200">
+                {services.slice(0, 5).map((service) => (
+                  <li key={service.title}>{service.title}</li>
+                ))}
+              </ul>
+            </div>
 
-          <div>
-            <h3 className="text-xl font-bold uppercase text-sky-300">Contact</h3>
-            <ul className="mt-3 space-y-2 text-slate-200">
-              <li>
-                <a href={business.phoneHref} className="inline-flex items-center gap-2 hover:text-white">
-                  <span aria-hidden>☎</span>
-                  {business.phoneDisplay}
-                </a>
-              </li>
-              <li>
-                <a href={`mailto:${business.email}`} className="inline-flex items-center gap-2 hover:text-white">
-                  <span aria-hidden>✉</span>
-                  {business.email}
-                </a>
-              </li>
-              <li className="inline-flex items-center gap-2">
-                <span aria-hidden>📍</span>
-                {business.location}
-              </li>
-              <li className="inline-flex items-center gap-2">
-                <span aria-hidden>🕒</span>
-                Serving Winder, GA &amp; nearby areas
-              </li>
-            </ul>
+            <div className="lg:col-span-3">
+              <h3 className="text-xl font-bold uppercase text-sky-300">Contact</h3>
+              <div className="mt-4 rounded-xl border border-white/15 bg-white/5 p-4">
+                <ul className="space-y-2 text-slate-200">
+                  <li>
+                    <a href={business.phoneHref} className="hover:text-white">
+                      {business.phoneDisplay}
+                    </a>
+                  </li>
+                  <li>
+                    <a href={`mailto:${business.email}`} className="inline-flex items-center gap-2 hover:text-white">
+                      <span aria-hidden>✉</span>
+                      {business.email}
+                    </a>
+                  </li>
+                  <li>{business.location}</li>
+                  <li>Serving Winder, GA &amp; nearby areas</li>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      <footer className="border-t border-white/15 bg-[#02142e] py-4 text-center text-sm text-slate-300">
-        <p>© {new Date().getFullYear()} {business.name}. All rights reserved.</p>
+      <footer className="bg-[#02142e] py-4 text-sm text-slate-300">
+        <div className="mx-auto flex max-w-[1280px] flex-col items-center justify-between gap-3 px-4 md:flex-row">
+          <p>© {new Date().getFullYear()} {business.name}. All rights reserved.</p>
+          <div className="flex items-center gap-5">
+            <a href="#contact" className="hover:text-white">Privacy Policy</a>
+            <a href="#contact" className="hover:text-white">Terms of Service</a>
+          </div>
+        </div>
       </footer>
 
       <a
