@@ -24,6 +24,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <meta
+          name="description"
+          content="24/7 emergency plumbing in Winder, GA. DRS Plumbing Service offers leak repair, drain cleaning, water heater repair, and fast local response."
+        />
+      </head>
       <body className={`${robotoCondensed.className} antialiased`}>{children}</body>
     </html>
   );
