@@ -167,7 +167,14 @@ export default function Page() {
       <header className="border-b border-slate-200 bg-white">
         <div className="mx-auto flex max-w-[1280px] flex-wrap items-center justify-between gap-3 px-4 py-4 sm:gap-4">
           <a href="#home" className="inline-flex items-center gap-3" aria-label="DRS Plumbing Service home">
-            <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#062451] text-xl font-bold text-white">💧</div>
+            <Image
+              src="/drsplumbing.webp"
+              alt="DRS Plumbing Service logo"
+              width={96}
+              height={96}
+              sizes="96px"
+              className="h-20 w-20 object-contain"
+            />
             <div>
               <p className="text-2xl font-extrabold uppercase leading-none text-[#062451] sm:text-3xl">DRS</p>
               <p className="text-xs font-semibold uppercase tracking-[0.08em] text-slate-600 sm:text-sm">Plumbing Service</p>
@@ -237,13 +244,6 @@ export default function Page() {
 
             <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
               <PrimaryCall label={`Call ${business.phoneDisplay}`} className="w-full sm:w-auto" />
-              <a
-                href="#contact"
-                className="inline-flex w-full items-center justify-center rounded-xl border border-[#1d4b85] bg-white px-6 py-4 text-base font-semibold uppercase tracking-[0.05em] text-[#0f3d78] transition hover:bg-slate-50 sm:w-auto"
-              >
-                <span aria-hidden>📅</span>
-                Get Free Estimate
-              </a>
             </div>
           </div>
 
