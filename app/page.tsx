@@ -124,7 +124,7 @@ function PrimaryCall({ className = "", label = "Call Now" }: { className?: strin
       className={`inline-flex items-center justify-center gap-2 rounded-xl bg-red-600 px-6 py-4 text-base font-bold uppercase tracking-[0.04em] text-white transition hover:bg-red-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-200 ${className}`}
     >
       <span aria-hidden>☎</span>
-      <span>{label}</span>
+      <span className="whitespace-nowrap">{label}</span>
     </a>
   );
 }
@@ -165,19 +165,19 @@ export default function Page() {
       </div>
 
       <header className="border-b border-slate-200 bg-white">
-        <div className="mx-auto flex max-w-[1280px] flex-wrap items-center justify-between gap-3 px-4 py-4 sm:gap-4">
-          <a href="#home" className="inline-flex items-center gap-3" aria-label="DRS Plumbing Service home">
+        <div className="mx-auto flex max-w-[1280px] items-center justify-between gap-2 px-4 py-3 sm:gap-4 sm:py-4">
+          <a href="#home" className="inline-flex min-w-0 items-center gap-2 sm:gap-3" aria-label="DRS Plumbing Service home">
             <Image
               src="/drsplumbing.webp"
               alt="DRS Plumbing Service logo"
               width={96}
               height={96}
               sizes="96px"
-              className="h-20 w-20 object-contain"
+              className="h-14 w-14 object-contain sm:h-20 sm:w-20"
             />
             <div>
-              <p className="text-2xl font-extrabold uppercase leading-none text-[#062451] sm:text-3xl">DRS</p>
-              <p className="text-xs font-semibold uppercase tracking-[0.08em] text-slate-600 sm:text-sm">Plumbing Service</p>
+              <p className="text-xl font-extrabold uppercase leading-none text-[#062451] sm:text-3xl">DRS</p>
+              <p className="text-[10px] font-semibold uppercase tracking-[0.08em] text-slate-600 sm:text-sm">Plumbing Service</p>
             </div>
           </a>
 
@@ -193,14 +193,14 @@ export default function Page() {
             ))}
           </nav>
 
-          <a href={business.phoneHref} className="rounded-xl border border-slate-300 bg-slate-50 px-3 py-2 shadow-sm sm:px-4 sm:py-3">
-            <div className="flex items-center gap-3">
-              <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-[#062451] text-lg text-white" aria-hidden>
+          <a href={business.phoneHref} className="ml-auto shrink-0 rounded-xl border border-slate-300 bg-slate-50 px-2 py-2 shadow-sm sm:px-4 sm:py-3">
+            <div className="flex items-center gap-2 sm:gap-3">
+              <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-[#062451] text-base text-white sm:h-10 sm:w-10 sm:text-lg" aria-hidden>
                 ☎
               </span>
               <div className="text-right">
-                <p className="text-2xl font-extrabold leading-none text-[#062451] sm:text-3xl">{business.phoneDisplay}</p>
-                <p className="mt-1 text-xs font-semibold uppercase tracking-[0.08em] text-red-600 sm:text-sm">24/7 Emergency Service</p>
+                <p className="whitespace-nowrap text-base font-extrabold leading-none text-[#062451] sm:text-3xl">{business.phoneDisplay}</p>
+                <p className="mt-1 hidden text-xs font-semibold uppercase tracking-[0.08em] text-red-600 sm:block sm:text-sm">24/7 Emergency Service</p>
               </div>
             </div>
           </a>
