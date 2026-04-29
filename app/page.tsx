@@ -2,12 +2,12 @@ import Image from "next/image";
 import type { Metadata } from "next";
 
 const business = {
-  name: "DRS Plumbing Service",
-  phoneDisplay: "(770) 307-7486",
-  phoneHref: "tel:+17703077486",
-  email: "leakfreehouses@yahoo.com",
-  location: "Winder, GA, USA",
-  facebook: "https://www.facebook.com/",
+  name: "S&A Plumbing",
+  phoneDisplay: "(770) 231-9439",
+  phoneHref: "tel:+17702319439",
+  email: "shanefrix@gmail.com",
+  location: "Shane Frix, Griffin, GA, United States, 30223",
+  facebook: "https://www.facebook.com/plumbershane/directory_privacy_and_legal_info",
 };
 
 const navItems = [
@@ -66,7 +66,7 @@ const trustStats = [
 ];
 
 const reasons = [
-  "Fast response across Winder and nearby areas",
+  "Fast response across Griffin and nearby areas",
   "Upfront pricing before work begins",
   "Experienced technicians and clean workmanship",
   "Respectful, on-time, customer-first service",
@@ -75,7 +75,7 @@ const reasons = [
 const reviews = [
   {
     name: "just me",
-    text: "DRS changed three leaky bathroom faucets for me. Very dependable, on time, professional, polite, and no mess left behind.",
+    text: "S&A Plumbing changed three leaky bathroom faucets for me. Very dependable, on time, professional, polite, and no mess left behind.",
   },
   {
     name: "Larry Meloro",
@@ -100,17 +100,17 @@ const reviews = [
 ];
 
 export const metadata: Metadata = {
-  title: "24/7 Emergency Plumbing in Winder, GA | DRS Plumbing Service",
+  title: "24/7 Emergency Plumbing in Griffin, GA | S&A Plumbing",
   description:
-    "Need a plumber now? DRS Plumbing Service provides emergency plumbing, leak repair, drain cleaning, and water heater repair in Winder, GA.",
+    "Need a plumber now? S&A Plumbing provides emergency plumbing, leak repair, drain cleaning, and water heater repair in Griffin, GA.",
   alternates: {
     canonical: "https://example.com",
   },
   openGraph: {
-    title: "DRS Plumbing Service | Emergency Plumber in Winder, GA",
-    description: "Fast local plumbing in Winder, GA. Call now for immediate service.",
+    title: "S&A Plumbing | Emergency Plumber in Griffin, GA",
+    description: "Fast local plumbing in Griffin, GA. Call now for immediate service.",
     url: "https://example.com",
-    siteName: "DRS Plumbing Service",
+    siteName: "S&A Plumbing",
     locale: "en_US",
     type: "website",
   },
@@ -166,18 +166,16 @@ export default function Page() {
 
       <header className="border-b border-slate-200 bg-white">
         <div className="mx-auto flex max-w-[1280px] items-center justify-between gap-2 px-4 py-3 sm:gap-4 sm:py-4">
-          <a href="#home" className="inline-flex min-w-0 items-center gap-2 sm:gap-3" aria-label="DRS Plumbing Service home">
-            <Image
-              src="/drsplumbing.webp"
-              alt="DRS Plumbing Service logo"
-              width={96}
-              height={96}
-              sizes="96px"
-              className="h-14 w-14 object-contain sm:h-20 sm:w-20"
-            />
+          <a href="#home" className="inline-flex min-w-0 items-center gap-2 sm:gap-3" aria-label="S&A Plumbing home">
+            <div
+              className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full border-2 border-[#0f4ea1] bg-white text-lg font-extrabold uppercase leading-none text-[#062451] shadow-sm sm:h-20 sm:w-20 sm:text-2xl"
+              aria-hidden
+            >
+              S&amp;A
+            </div>
             <div>
-              <p className="text-xl font-extrabold uppercase leading-none text-[#062451] sm:text-3xl">DRS</p>
-              <p className="text-[10px] font-semibold uppercase tracking-[0.08em] text-slate-600 sm:text-sm">Plumbing Service</p>
+              <p className="text-xl font-extrabold uppercase leading-none text-[#062451] sm:text-3xl">S&amp;A</p>
+              <p className="text-[10px] font-semibold uppercase tracking-[0.08em] text-slate-600 sm:text-sm">Plumbing</p>
             </div>
           </a>
 
@@ -232,7 +230,7 @@ export default function Page() {
             </h1>
 
             <p className="mt-6 max-w-xl text-xl text-[#1c355f] sm:text-2xl">
-              24/7 emergency plumbing in Winder, GA with fast response and reliable service.
+              24/7 emergency plumbing in Griffin, GA with fast response and reliable service.
             </p>
 
             <ul className="mt-6 space-y-2 text-lg text-[#0d2850] sm:text-xl">
@@ -377,14 +375,14 @@ export default function Page() {
         <div className="mx-auto max-w-[1280px] px-4">
           <div className="grid gap-8 border-b border-white/15 pb-10 md:grid-cols-2 lg:grid-cols-12">
             <div className="lg:col-span-5">
-              <h3 className="text-3xl font-extrabold uppercase">DRS Plumbing Service</h3>
+              <h3 className="text-3xl font-extrabold uppercase">S&amp;A Plumbing</h3>
               <p className="mt-3 max-w-md text-slate-300">
-                Providing reliable plumbing services in Winder, GA and nearby communities.
+                Providing reliable plumbing services in Griffin, GA and nearby communities.
               </p>
               <div className="mt-4 overflow-hidden rounded-lg border border-white/20">
                 <iframe
-                  title="DRS Plumbing Service area map"
-                  src="https://www.google.com/maps?q=Winder,GA&output=embed"
+                  title="S&A Plumbing service area map"
+                  src="https://www.google.com/maps?q=Griffin,GA,30223&output=embed"
                   className="h-44 w-full"
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
@@ -441,7 +439,7 @@ export default function Page() {
                     </a>
                   </li>
                   <li>{business.location}</li>
-                  <li>Serving Winder, GA &amp; nearby areas</li>
+                  <li>Serving Griffin, GA &amp; nearby areas</li>
                 </ul>
               </div>
             </div>
