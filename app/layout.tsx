@@ -11,10 +11,10 @@ const robotoCondensed = Roboto_Condensed({
 export const metadata: Metadata = {
   metadataBase: new URL("https://example.com"),
   title: {
-    default: "S&A Plumbing",
-    template: "%s | S&A Plumbing",
+    default: "YOUR Plumbing Services",
+    template: "%s | YOUR Plumbing Services",
   },
-  description: "24/7 emergency plumber in Griffin, GA.",
+  description: "24/7 emergency plumber in your city.",
 };
 
 export default function RootLayout({
@@ -27,7 +27,7 @@ export default function RootLayout({
       <head>
         <meta
           name="description"
-          content="24/7 emergency plumbing in Griffin, GA. S&A Plumbing offers leak repair, drain cleaning, water heater repair, and fast local response."
+          content="24/7 emergency plumbing in your city. YOUR Plumbing Services offers leak repair, drain cleaning, water heater repair, and fast local response."
         />
       </head>
       <body className={`${robotoCondensed.className} antialiased`}>{children}</body>

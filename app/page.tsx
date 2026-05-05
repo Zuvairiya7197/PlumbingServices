@@ -2,12 +2,15 @@ import Image from "next/image";
 import type { Metadata } from "next";
 
 const business = {
-  name: "S&A Plumbing",
-  phoneDisplay: "(770) 231-9439",
-  phoneHref: "tel:+17702319439",
-  email: "shanefrix@gmail.com",
-  location: "Shane Frix, Griffin, GA, United States, 30223",
+  name: "YOUR Plumbing Services",
+  phoneDisplay: "(123) 456-7890",
+  phoneHref: "tel:+11234567890",
+  email: "info@yourplumbingservices.com",
+  location: "123 Main Street, Your City, ST 12345",
   facebook: "https://www.facebook.com/plumbershane/directory_privacy_and_legal_info",
+  instagram: "https://www.instagram.com/",
+  youtube: "https://www.youtube.com/",
+  google: "https://www.google.com/search?q=plumbing+services",
 };
 
 const navItems = [
@@ -25,34 +28,43 @@ const utilityItems = [
   { label: "Licensed & Insured", icon: "🛡" },
 ];
 
+const socialLinks = [
+  { label: "Facebook", href: business.facebook, icon: "facebook" },
+  { label: "Instagram", href: business.instagram, icon: "instagram" },
+  { label: "YouTube", href: business.youtube, icon: "youtube" },
+  { label: "Google Business", href: business.google, icon: "google" },
+  { label: "Call", href: business.phoneHref, icon: "phone" },
+  { label: "Email", href: `mailto:${business.email}`, icon: "email" },
+];
+
 const services = [
   {
-    icon: "💧",
+    icon: "leak",
     title: "Leak Repair",
     description: "Stop hidden or visible leaks before they become bigger problems.",
   },
   {
-    icon: "🌀",
+    icon: "drain",
     title: "Drain Cleaning",
     description: "Clear slow or blocked drains quickly with professional tools.",
   },
   {
-    icon: "♨",
+    icon: "heater",
     title: "Water Heater Repair",
     description: "Restore hot water fast for gas and electric systems.",
   },
   {
-    icon: "🚨",
+    icon: "emergency",
     title: "Emergency Plumbing",
     description: "Immediate help for urgent plumbing issues day or night.",
   },
   {
-    icon: "🔧",
+    icon: "pipe",
     title: "Pipe Installation",
     description: "Durable pipe installs and replacements done the right way.",
   },
   {
-    icon: "✅",
+    icon: "inspection",
     title: "Preventive Inspections",
     description: "Find risks early and reduce emergency plumbing surprises.",
   },
@@ -66,7 +78,7 @@ const trustStats = [
 ];
 
 const reasons = [
-  "Fast response across Griffin and nearby areas",
+  "Fast response across your city and nearby areas",
   "Upfront pricing before work begins",
   "Experienced technicians and clean workmanship",
   "Respectful, on-time, customer-first service",
@@ -74,43 +86,43 @@ const reasons = [
 
 const reviews = [
   {
-    name: "just me",
-    text: "S&A Plumbing changed three leaky bathroom faucets for me. Very dependable, on time, professional, polite, and no mess left behind.",
+    name: "Residential Customer",
+    text: "The plumber arrived on time, explained the repair clearly, and fixed our leaking faucet without leaving any mess behind.",
   },
   {
-    name: "Larry Meloro",
-    text: "Danny got the exact 80-gallon water heater I wanted at a better price than other quotes. His team was on time and did a great job.",
+    name: "Homeowner",
+    text: "We needed help with a water heater issue and received fast, professional service with straightforward pricing.",
   },
   {
-    name: "Lilian Cruz",
-    text: "Excellent service. The plumber was prompt, professional, and fixed a leak and stubborn clog efficiently with fair pricing.",
+    name: "Local Customer",
+    text: "Excellent service from start to finish. The team cleared a stubborn drain and made sure everything was working properly.",
   },
   {
-    name: "Garrett Tomlinson",
-    text: "I rarely leave reviews, but this company is wonderful. Prompt turnaround, consistent quality, and very reliable service.",
+    name: "Property Owner",
+    text: "Reliable, courteous, and easy to work with. They handled our pipe repair quickly and kept us updated the whole time.",
   },
   {
-    name: "Brandi",
-    text: "Called at 8 with a water heater leak, and by 10:30 a new one was installed. Upfront pricing and very reasonable.",
+    name: "Emergency Customer",
+    text: "Called for an urgent plumbing problem and got a quick response. The repair was handled calmly and professionally.",
   },
   {
-    name: "John Brouwer",
-    text: "Quality, service, and integrity. They stand behind their work, which is hard to find these days.",
+    name: "Repeat Client",
+    text: "Great workmanship and honest communication. We would call again for future plumbing repairs or inspections.",
   },
 ];
 
 export const metadata: Metadata = {
-  title: "24/7 Emergency Plumbing in Griffin, GA | S&A Plumbing",
+  title: "24/7 Emergency Plumbing in Your City | YOUR Plumbing Services",
   description:
-    "Need a plumber now? S&A Plumbing provides emergency plumbing, leak repair, drain cleaning, and water heater repair in Griffin, GA.",
+    "Need a plumber now? YOUR Plumbing Services provides emergency plumbing, leak repair, drain cleaning, and water heater repair in your city.",
   alternates: {
     canonical: "https://example.com",
   },
   openGraph: {
-    title: "S&A Plumbing | Emergency Plumber in Griffin, GA",
-    description: "Fast local plumbing in Griffin, GA. Call now for immediate service.",
+    title: "YOUR Plumbing Services | Emergency Plumber in Your City",
+    description: "Fast local plumbing in your city. Call now for immediate service.",
     url: "https://example.com",
-    siteName: "S&A Plumbing",
+    siteName: "YOUR Plumbing Services",
     locale: "en_US",
     type: "website",
   },
@@ -136,6 +148,133 @@ function SectionHeading({ eyebrow, title }: { eyebrow: string; title: string }) 
       <h2 className="mt-2 text-4xl font-extrabold uppercase tracking-tight text-[#062451] sm:text-5xl">{title}</h2>
     </header>
   );
+}
+
+function ServiceIcon({ type }: { type: string }) {
+  const common = {
+    className: "h-9 w-9",
+    fill: "none",
+    stroke: "currentColor",
+    strokeLinecap: "round" as const,
+    strokeLinejoin: "round" as const,
+    strokeWidth: 1.8,
+    viewBox: "0 0 24 24",
+  };
+
+  switch (type) {
+    case "drain":
+      return (
+        <svg {...common} aria-hidden>
+          <path d="M4 7h16" />
+          <path d="M7 7v4a5 5 0 0 0 10 0V7" />
+          <path d="M9 17h6" />
+          <path d="M10 21h4" />
+          <path d="M12 3v4" />
+        </svg>
+      );
+    case "heater":
+      return (
+        <svg {...common} aria-hidden>
+          <rect x="7" y="3" width="10" height="18" rx="3" />
+          <path d="M10 7h4" />
+          <path d="M12 12c-1 1-1.5 1.8-1.5 2.7a1.5 1.5 0 0 0 3 0c0-.9-.5-1.7-1.5-2.7Z" />
+          <path d="M9 21v1" />
+          <path d="M15 21v1" />
+        </svg>
+      );
+    case "emergency":
+      return (
+        <svg {...common} aria-hidden>
+          <path d="M12 3v3" />
+          <path d="M5.6 5.6 7.7 7.7" />
+          <path d="m18.4 5.6-2.1 2.1" />
+          <path d="M6 21v-5a6 6 0 0 1 12 0v5" />
+          <path d="M4 21h16" />
+          <path d="M9 16h6" />
+        </svg>
+      );
+    case "pipe":
+      return (
+        <svg {...common} aria-hidden>
+          <path d="M4 8h8a4 4 0 0 1 4 4v8" />
+          <path d="M4 12h8v8" />
+          <path d="M2 6h4v8H2z" />
+          <path d="M10 18h8v4h-8z" />
+        </svg>
+      );
+    case "inspection":
+      return (
+        <svg {...common} aria-hidden>
+          <path d="M9 11.5 11 13.5 15.5 9" />
+          <path d="M5 4h14v16H5z" />
+          <path d="M8 4V2h8v2" />
+        </svg>
+      );
+    default:
+      return (
+        <svg {...common} aria-hidden>
+          <path d="M12 3S6.5 9.4 6.5 14a5.5 5.5 0 0 0 11 0C17.5 9.4 12 3 12 3Z" />
+          <path d="M9.5 14.5a2.5 2.5 0 0 0 5 0" />
+        </svg>
+      );
+  }
+}
+
+function SocialIcon({ type }: { type: string }) {
+  const common = {
+    className: "h-4 w-4",
+    fill: "none",
+    stroke: "currentColor",
+    strokeLinecap: "round" as const,
+    strokeLinejoin: "round" as const,
+    strokeWidth: 2,
+    viewBox: "0 0 24 24",
+  };
+
+  switch (type) {
+    case "instagram":
+      return (
+        <svg {...common} aria-hidden>
+          <rect x="4" y="4" width="16" height="16" rx="5" />
+          <circle cx="12" cy="12" r="3.5" />
+          <path d="M17.5 6.8h.01" />
+        </svg>
+      );
+    case "youtube":
+      return (
+        <svg {...common} aria-hidden>
+          <rect x="3" y="6" width="18" height="12" rx="3" />
+          <path d="m10 9 5 3-5 3Z" />
+        </svg>
+      );
+    case "google":
+      return (
+        <svg {...common} aria-hidden>
+          <path d="M20 12.2a8 8 0 1 1-2.2-5.5" />
+          <path d="M20 12h-8" />
+          <path d="M17.5 16.5A6.7 6.7 0 0 1 12 19" />
+        </svg>
+      );
+    case "phone":
+      return (
+        <svg {...common} aria-hidden>
+          <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.7.6 2.5a2 2 0 0 1-.4 2.1L8.1 9.5a16 16 0 0 0 6.4 6.4l1.2-1.2a2 2 0 0 1 2.1-.4c.8.3 1.6.5 2.5.6a2 2 0 0 1 1.7 2Z" />
+        </svg>
+      );
+    case "email":
+      return (
+        <svg {...common} aria-hidden>
+          <rect x="3" y="5" width="18" height="14" rx="2" />
+          <path d="m3 7 9 6 9-6" />
+        </svg>
+      );
+    default:
+      return (
+        <svg {...common} aria-hidden>
+          <path d="M15 8h2V5h-2c-2.2 0-4 1.8-4 4v2H8v3h3v7h3v-7h3l1-3h-4V9c0-.6.4-1 1-1Z" />
+        </svg>
+      );
+  }
 }
 
 export default function Page() {
@@ -165,21 +304,25 @@ export default function Page() {
       </div>
 
       <header className="border-b border-slate-200 bg-white">
-        <div className="mx-auto flex max-w-[1280px] items-center justify-between gap-2 px-4 py-3 sm:gap-4 sm:py-4">
-          <a href="#home" className="inline-flex min-w-0 items-center gap-2 sm:gap-3" aria-label="S&A Plumbing home">
-            <div
-              className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full border-2 border-[#0f4ea1] bg-white text-lg font-extrabold uppercase leading-none text-[#062451] shadow-sm sm:h-20 sm:w-20 sm:text-2xl"
-              aria-hidden
-            >
-              S&amp;A
+        <div className="mx-auto grid max-w-[1280px] grid-cols-[auto_auto] items-center justify-between gap-2 px-4 py-3 sm:gap-4 sm:py-4 xl:grid-cols-[auto_1fr_auto]">
+          <a href="#home" className="inline-flex min-w-0 items-center gap-2 sm:gap-3" aria-label="YOUR Plumbing Services home">
+            <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-full bg-white shadow-sm ring-1 ring-slate-200 sm:h-20 sm:w-20">
+              <Image
+                src="/logo.png"
+                alt=""
+                fill
+                sizes="(max-width: 640px) 56px, 80px"
+                className="object-contain p-1"
+                aria-hidden
+              />
             </div>
             <div>
-              <p className="text-xl font-extrabold uppercase leading-none text-[#062451] sm:text-3xl">S&amp;A</p>
-              <p className="text-[10px] font-semibold uppercase tracking-[0.08em] text-slate-600 sm:text-sm">Plumbing</p>
+              <p className="text-xl font-extrabold uppercase leading-none text-[#062451] sm:text-3xl">YOUR</p>
+              <p className="text-[10px] font-semibold uppercase tracking-[0.08em] text-slate-600 sm:text-sm">Plumbing Services</p>
             </div>
           </a>
 
-          <nav className="hidden items-center gap-8 xl:flex" aria-label="Primary">
+          <nav className="hidden items-center justify-center gap-8 xl:flex" aria-label="Primary">
             {navItems.map((item) => (
               <a
                 key={item.label}
@@ -191,7 +334,7 @@ export default function Page() {
             ))}
           </nav>
 
-          <a href={business.phoneHref} className="ml-auto shrink-0 rounded-xl border border-slate-300 bg-slate-50 px-2 py-2 shadow-sm sm:px-4 sm:py-3">
+          <a href={business.phoneHref} className="shrink-0 rounded-xl border border-slate-300 bg-slate-50 px-2 py-2 shadow-sm sm:px-4 sm:py-3">
             <div className="flex items-center gap-2 sm:gap-3">
               <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-[#062451] text-base text-white sm:h-10 sm:w-10 sm:text-lg" aria-hidden>
                 ☎
@@ -230,7 +373,7 @@ export default function Page() {
             </h1>
 
             <p className="mt-6 max-w-xl text-xl text-[#1c355f] sm:text-2xl">
-              24/7 emergency plumbing in Griffin, GA with fast response and reliable service.
+              24/7 emergency plumbing in your area with fast response and reliable service.
             </p>
 
             <ul className="mt-6 space-y-2 text-lg text-[#0d2850] sm:text-xl">
@@ -283,7 +426,9 @@ export default function Page() {
           <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
             {services.map((service) => (
               <article key={service.title} className="rounded-xl border border-slate-200 bg-white p-5 text-center shadow-sm">
-                <p className="text-3xl" aria-hidden>{service.icon}</p>
+                <div className="mx-auto mb-4 inline-flex h-14 w-14 items-center justify-center rounded-full bg-sky-50 text-[#0f4ea1]" aria-hidden>
+                  <ServiceIcon type={service.icon} />
+                </div>
                 <h3 className="text-xl font-extrabold uppercase leading-tight text-[#0f2f5f]">{service.title}</h3>
                 <p className="mt-3 text-base text-slate-600">{service.description}</p>
                 <a
@@ -375,29 +520,32 @@ export default function Page() {
         <div className="mx-auto max-w-[1280px] px-4">
           <div className="grid gap-8 border-b border-white/15 pb-10 md:grid-cols-2 lg:grid-cols-12">
             <div className="lg:col-span-5">
-              <h3 className="text-3xl font-extrabold uppercase">S&amp;A Plumbing</h3>
+              <h3 className="text-3xl font-extrabold uppercase">YOUR Plumbing Services</h3>
               <p className="mt-3 max-w-md text-slate-300">
-                Providing reliable plumbing services in Griffin, GA and nearby communities.
+                Providing reliable plumbing services in your city and nearby communities.
               </p>
               <div className="mt-4 overflow-hidden rounded-lg border border-white/20">
                 <iframe
-                  title="S&A Plumbing service area map"
-                  src="https://www.google.com/maps?q=Griffin,GA,30223&output=embed"
+                  title="YOUR Plumbing Services service area map"
+                  src="https://www.google.com/maps?q=123+Main+Street,+Your+City,+ST+12345&output=embed"
                   className="h-44 w-full"
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
                 />
               </div>
-              <div className="mt-4 flex items-center gap-3 text-sky-300">
-                <a
-                  href={business.facebook}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-sky-300/70 font-bold"
-                  aria-label="Visit our Facebook page"
-                >
-                  f
-                </a>
+              <div className="mt-4 flex flex-wrap items-center gap-3 text-sky-300">
+                {socialLinks.map((link) => (
+                  <a
+                    key={link.label}
+                    href={link.href}
+                    target={link.href.startsWith("http") ? "_blank" : undefined}
+                    rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                    className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-sky-300/70 transition hover:bg-sky-300 hover:text-[#031b3d]"
+                    aria-label={link.label}
+                  >
+                    <SocialIcon type={link.icon} />
+                  </a>
+                ))}
               </div>
             </div>
 
@@ -439,7 +587,7 @@ export default function Page() {
                     </a>
                   </li>
                   <li>{business.location}</li>
-                  <li>Serving Griffin, GA &amp; nearby areas</li>
+                  <li>Serving your city &amp; nearby areas</li>
                 </ul>
               </div>
             </div>
