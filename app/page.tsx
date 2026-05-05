@@ -306,15 +306,13 @@ export default function Page() {
       <header className="border-b border-slate-200 bg-white">
         <div className="mx-auto grid max-w-[1280px] grid-cols-[auto_auto] items-center justify-between gap-2 px-4 py-3 sm:gap-4 sm:py-4 xl:grid-cols-[auto_1fr_auto]">
           <a href="#home" className="inline-flex min-w-0 items-center gap-2 sm:gap-3" aria-label="YOUR Plumbing Services home">
-            <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-full bg-white shadow-sm ring-1 ring-slate-200 sm:h-20 sm:w-20">
-              <Image
-                src="/logo.png"
-                alt=""
-                fill
-                sizes="(max-width: 640px) 56px, 80px"
-                className="object-contain p-1"
-                aria-hidden
-              />
+            <div
+              className="font-heading flex h-14 w-14 shrink-0 items-center justify-center rounded-full border-2 border-[#0f4ea1] bg-white px-1 text-center text-[10px] font-extrabold uppercase leading-[0.95] text-[#062451] shadow-sm sm:h-20 sm:w-20 sm:text-sm"
+              aria-hidden
+            >
+              Your
+              <br />
+              Logo
             </div>
             <div>
               <p className="text-xl font-extrabold uppercase leading-none text-[#062451] sm:text-3xl">YOUR</p>
