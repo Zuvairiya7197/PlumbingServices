@@ -133,9 +133,9 @@ function PrimaryCall({ className = "", label = "Call Now" }: { className?: strin
     <a
       href={business.phoneHref}
       aria-label={`Call ${business.name} at ${business.phoneDisplay}`}
-      className={`inline-flex items-center justify-center gap-2 rounded-xl bg-red-600 px-6 py-4 text-base font-bold uppercase tracking-[0.04em] text-white transition hover:bg-red-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-200 ${className}`}
+      className={`inline-flex items-center justify-center gap-3 rounded-xl border border-red-400/30 bg-red-600 px-6 py-4 text-base font-extrabold uppercase tracking-[0.06em] text-white shadow-[0_16px_34px_rgba(220,38,38,0.28)] transition duration-300 hover:-translate-y-0.5 hover:bg-red-500 hover:shadow-[0_20px_44px_rgba(220,38,38,0.36)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-200 ${className}`}
     >
-      <span aria-hidden>☎</span>
+      <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-white/15 text-sm ring-1 ring-white/25" aria-hidden>☎</span>
       <span className="whitespace-nowrap">{label}</span>
     </a>
   );
@@ -418,24 +418,37 @@ export default function Page() {
         </div>
       </section>
 
-      <section id="services" className="bg-slate-100 py-14">
-        <div className="mx-auto max-w-[1280px] px-4">
-          <SectionHeading eyebrow="Our Plumbing Services" title="Complete Plumbing Solutions" />
-          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
+      <section id="services" className="relative overflow-hidden bg-[#f5f8fc] py-20">
+        <div className="relative mx-auto max-w-[1280px] px-4">
+          <div className="mx-auto max-w-4xl text-center">
+            <p className="font-heading text-sm font-extrabold uppercase tracking-[0.22em] text-[#0f4ea1]">Our Plumbing Services</p>
+            <h2 className="mt-3 text-4xl font-extrabold uppercase tracking-tight text-[#062451] sm:text-5xl">Complete Plumbing Solutions</h2>
+            <p className="mx-auto mt-4 max-w-2xl text-lg leading-8 text-slate-600">
+              Premium repairs, installs, and emergency support delivered with clean workmanship, clear communication, and dependable response times.
+            </p>
+            <div className="mx-auto mt-6 h-1 w-24 rounded-full bg-red-600" aria-hidden />
+          </div>
+
+          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {services.map((service) => (
-              <article key={service.title} className="rounded-xl border border-slate-200 bg-white p-5 text-center shadow-sm">
-                <div className="mx-auto mb-4 inline-flex h-14 w-14 items-center justify-center rounded-full bg-sky-50 text-[#0f4ea1]" aria-hidden>
-                  <ServiceIcon type={service.icon} />
+              <article
+                key={service.title}
+                className="group rounded-xl border border-slate-200 bg-white p-6 transition duration-300 hover:border-[#0f4ea1]/40 hover:shadow-[0_14px_34px_rgba(15,35,68,0.08)]"
+              >
+                <div className="flex min-h-full flex-col">
+                  <div className="inline-flex h-12 w-12 items-center justify-center rounded-lg bg-[#eaf3ff] text-[#0f4ea1] transition group-hover:bg-[#0f4ea1] group-hover:text-white" aria-hidden>
+                    <ServiceIcon type={service.icon} />
+                  </div>
+                  <h3 className="mt-5 text-xl font-extrabold uppercase leading-tight text-[#062451]">{service.title}</h3>
+                  <p className="mt-3 flex-1 text-base leading-7 text-slate-600">{service.description}</p>
+                  <a
+                    href={business.phoneHref}
+                    className="mt-5 inline-flex items-center gap-2 text-sm font-bold uppercase tracking-[0.08em] text-red-600 transition hover:text-[#0f4ea1]"
+                  >
+                    <span aria-hidden>☎</span>
+                    Call Now
+                  </a>
                 </div>
-                <h3 className="text-xl font-extrabold uppercase leading-tight text-[#0f2f5f]">{service.title}</h3>
-                <p className="mt-3 text-base text-slate-600">{service.description}</p>
-                <a
-                  href={business.phoneHref}
-                  className="mt-4 inline-flex items-center justify-center text-sm font-semibold uppercase tracking-[0.08em] text-sky-700 hover:text-sky-800"
-                >
-                  <span aria-hidden className="mr-1">☎</span>
-                  Call Now
-                </a>
               </article>
             ))}
           </div>
@@ -480,22 +493,39 @@ export default function Page() {
         </div>
       </section>
 
-      <section id="reviews" className="bg-white py-14">
+      <section id="reviews" className="bg-white py-20">
         <div className="mx-auto max-w-[1280px] px-4">
-          <SectionHeading eyebrow="What Our Customers Say" title="Real Reviews. Real Results." />
-          <div className="mt-8 grid gap-4 md:grid-cols-3">
+          <div className="mx-auto max-w-4xl text-center">
+            <p className="font-heading text-sm font-extrabold uppercase tracking-[0.22em] text-[#0f4ea1]">What Our Customers Say</p>
+            <h2 className="mt-3 text-4xl font-extrabold uppercase tracking-tight text-[#062451] sm:text-5xl">
+              Trusted When Plumbing Can&apos;t Wait
+            </h2>
+            <p className="mx-auto mt-4 max-w-2xl text-lg leading-8 text-slate-600">
+              Homeowners call for fast answers, clean repairs, and service that feels professional from the first ring.
+            </p>
+          </div>
+
+          <div className="mt-12 grid gap-5 md:grid-cols-3">
             {reviews.map((review) => (
-              <blockquote key={review.name} className="rounded-xl border border-slate-200 bg-slate-50 p-6 text-center">
-                <p className="text-amber-500">★★★★★</p>
-                <p className="mt-3 text-lg text-slate-700">"{review.text}"</p>
-                <footer className="mt-4 text-lg font-bold text-[#0f3b75]">- {review.name}</footer>
+              <blockquote
+                key={review.name}
+                className="relative rounded-xl border border-slate-200 bg-[#f8fbff] p-6 shadow-[0_14px_34px_rgba(15,35,68,0.06)]"
+              >
+                <div className="flex items-center justify-between gap-4">
+                  <p className="text-lg tracking-[0.12em] text-amber-500" aria-label="Five star review">★★★★★</p>
+                  <span className="font-heading text-4xl font-extrabold leading-none text-[#0f4ea1]/15" aria-hidden>&quot;</span>
+                </div>
+                <p className="mt-5 text-lg leading-8 text-slate-700">&quot;{review.text}&quot;</p>
+                <footer className="mt-6 border-t border-slate-200 pt-4 text-base font-extrabold uppercase tracking-[0.06em] text-[#062451]">
+                  {review.name}
+                </footer>
               </blockquote>
             ))}
           </div>
           <div className="mt-8 text-center">
             <a
               href={business.phoneHref}
-              className="inline-flex items-center justify-center rounded-lg border border-sky-700 px-5 py-3 text-sm font-semibold uppercase tracking-[0.08em] text-sky-700 hover:bg-sky-50"
+              className="inline-flex items-center justify-center rounded-xl border border-[#0f4ea1]/20 bg-[#0f4ea1] px-6 py-4 text-sm font-extrabold uppercase tracking-[0.08em] text-white shadow-[0_14px_30px_rgba(15,78,161,0.22)] transition hover:-translate-y-0.5 hover:bg-[#062451]"
             >
               Speak With Our Team
             </a>
@@ -503,14 +533,26 @@ export default function Page() {
         </div>
       </section>
 
-      <section id="contact" className="bg-[#0f4ea1] py-8 text-white">
-        <div className="mx-auto flex max-w-[1280px] flex-wrap items-center justify-between gap-5 px-4">
-          <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.1em] text-sky-100">Need a Plumber Now?</p>
-            <p className="mt-1 text-3xl font-extrabold uppercase leading-none sm:text-4xl">We&apos;re Ready to Help</p>
-            <p className="mt-2 text-lg text-sky-100 sm:text-xl">Call now for immediate assistance.</p>
+      <section id="contact" className="bg-[#031b3d] py-14 text-white">
+        <div className="mx-auto max-w-[1280px] px-4">
+          <div className="grid items-center gap-8 rounded-2xl border border-sky-300/20 bg-[#0f4ea1] p-6 shadow-[0_24px_70px_rgba(3,27,61,0.28)] sm:p-8 lg:grid-cols-[1fr_auto] lg:p-10">
+            <div>
+              <p className="inline-flex rounded-full border border-sky-200/40 bg-white/10 px-4 py-2 text-xs font-extrabold uppercase tracking-[0.14em] text-sky-100">
+                Need a Plumber Now?
+              </p>
+              <p className="font-heading mt-5 text-4xl font-extrabold uppercase leading-none sm:text-5xl">We&apos;re Ready to Help</p>
+              <p className="mt-4 max-w-2xl text-lg leading-8 text-sky-100 sm:text-xl">Call now for immediate assistance from a responsive plumbing team.</p>
+              <div className="mt-6 flex flex-wrap gap-3 text-sm font-bold uppercase tracking-[0.08em] text-white/90">
+                <span className="rounded-full bg-white/10 px-4 py-2">24/7 Emergency</span>
+                <span className="rounded-full bg-white/10 px-4 py-2">Fast Dispatch</span>
+                <span className="rounded-full bg-white/10 px-4 py-2">Clear Pricing</span>
+              </div>
+            </div>
+            <div className="rounded-2xl border border-white/15 bg-[#062451]/45 p-4 shadow-inner sm:p-5">
+              <p className="mb-3 text-center text-xs font-extrabold uppercase tracking-[0.14em] text-sky-200">Speak With Us</p>
+              <PrimaryCall className="w-full bg-red-600 sm:w-auto" label={`Call ${business.phoneDisplay}`} />
+            </div>
           </div>
-          <PrimaryCall className="w-full bg-red-600 sm:w-auto" label={`Call ${business.phoneDisplay}`} />
         </div>
       </section>
 
@@ -606,9 +648,9 @@ export default function Page() {
       <a
         href={business.phoneHref}
         aria-label={`Call now at ${business.phoneDisplay}`}
-        className="fixed bottom-6 right-6 z-50 hidden items-center gap-2 rounded-full bg-red-600 px-5 py-3 text-sm font-bold uppercase tracking-[0.06em] text-white shadow-[0_12px_24px_rgba(220,38,38,0.4)] transition hover:bg-red-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-300 lg:inline-flex"
+        className="fixed bottom-6 right-6 z-50 hidden items-center gap-2 rounded-full border border-red-400/30 bg-red-600 px-5 py-3 text-sm font-extrabold uppercase tracking-[0.06em] text-white shadow-[0_16px_34px_rgba(220,38,38,0.32)] transition duration-300 hover:-translate-y-0.5 hover:bg-red-500 hover:shadow-[0_20px_44px_rgba(220,38,38,0.4)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-300 lg:inline-flex"
       >
-        <span aria-hidden>☎</span>
+        <span className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-white/15 text-xs ring-1 ring-white/25" aria-hidden>☎</span>
         Call Now
       </a>
 
