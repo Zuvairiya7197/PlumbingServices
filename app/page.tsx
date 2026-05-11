@@ -133,7 +133,7 @@ function PrimaryCall({ className = "", label = "Call Now" }: { className?: strin
     <a
       href={business.phoneHref}
       aria-label={`Call ${business.name} at ${business.phoneDisplay}`}
-      className={`inline-flex min-w-0 items-center justify-center gap-3 rounded-xl border border-red-400/30 bg-red-600 px-4 py-4 text-center text-base font-extrabold uppercase tracking-[0.06em] text-white shadow-[0_16px_34px_rgba(220,38,38,0.28)] transition duration-300 hover:-translate-y-0.5 hover:bg-red-500 hover:shadow-[0_20px_44px_rgba(220,38,38,0.36)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-200 sm:px-6 ${className}`}
+      className={`inline-flex max-w-full min-w-0 items-center justify-center gap-2 rounded-xl border border-red-400/30 bg-red-600 px-3 py-4 text-center text-sm font-extrabold uppercase tracking-[0.03em] text-white shadow-[0_16px_34px_rgba(220,38,38,0.28)] transition duration-300 hover:-translate-y-0.5 hover:bg-red-500 hover:shadow-[0_20px_44px_rgba(220,38,38,0.36)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-200 sm:gap-3 sm:px-6 sm:text-base sm:tracking-[0.06em] ${className}`}
     >
       <span className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white/15 text-sm ring-1 ring-white/25" aria-hidden>☎</span>
       <span className="min-w-0 whitespace-normal leading-tight">{label}</span>
@@ -535,21 +535,21 @@ export default function Page() {
 
       <section id="contact" className="bg-[#031b3d] py-14 text-white">
         <div className="mx-auto max-w-[1280px] px-4">
-          <div className="grid min-w-0 items-center gap-8 rounded-2xl border border-sky-300/20 bg-[#0f4ea1] p-5 shadow-[0_24px_70px_rgba(3,27,61,0.28)] sm:p-8 lg:grid-cols-[1fr_auto] lg:p-10">
+          <div className="grid min-w-0 items-center gap-8 overflow-hidden rounded-2xl border border-sky-300/20 bg-[#0f4ea1] p-4 shadow-[0_24px_70px_rgba(3,27,61,0.28)] sm:p-8 lg:grid-cols-[1fr_auto] lg:p-10">
             <div className="min-w-0">
-              <p className="inline-flex max-w-full rounded-full border border-sky-200/40 bg-white/10 px-4 py-2 text-center text-xs font-extrabold uppercase tracking-[0.08em] text-sky-100 sm:tracking-[0.14em]">
+              <p className="inline-flex max-w-full rounded-full border border-sky-200/40 bg-white/10 px-3 py-2 text-center text-[11px] font-extrabold uppercase tracking-[0.04em] text-sky-100 sm:px-4 sm:text-xs sm:tracking-[0.14em]">
                 Need a Plumber Now?
               </p>
               <p className="font-heading mt-5 text-3xl font-extrabold uppercase leading-none sm:text-5xl">We&apos;re Ready to Help</p>
-              <p className="mt-4 max-w-2xl text-lg leading-8 text-sky-100 sm:text-xl">Call now for immediate assistance from a responsive plumbing team.</p>
-              <div className="mt-6 flex flex-wrap gap-3 text-sm font-bold uppercase tracking-[0.08em] text-white/90">
+              <p className="mt-4 max-w-2xl text-base leading-7 text-sky-100 sm:text-xl sm:leading-8">Call now for immediate assistance from a responsive plumbing team.</p>
+              <div className="mt-6 flex flex-wrap gap-2 text-xs font-bold uppercase tracking-[0.04em] text-white/90 sm:gap-3 sm:text-sm sm:tracking-[0.08em]">
                 <span className="rounded-full bg-white/10 px-4 py-2">24/7 Emergency</span>
                 <span className="rounded-full bg-white/10 px-4 py-2">Fast Dispatch</span>
                 <span className="rounded-full bg-white/10 px-4 py-2">Clear Pricing</span>
               </div>
             </div>
-            <div className="min-w-0 rounded-2xl border border-white/15 bg-[#062451]/45 p-4 shadow-inner sm:p-5">
-              <p className="mb-3 text-center text-xs font-extrabold uppercase tracking-[0.14em] text-sky-200">Speak With Us</p>
+            <div className="min-w-0 rounded-2xl border border-white/15 bg-[#062451]/45 p-3 shadow-inner sm:p-5">
+              <p className="mb-3 text-center text-[11px] font-extrabold uppercase tracking-[0.08em] text-sky-200 sm:text-xs sm:tracking-[0.14em]">Speak With Us</p>
               <PrimaryCall className="w-full bg-red-600 sm:w-auto" label={`Call ${business.phoneDisplay}`} />
             </div>
           </div>
